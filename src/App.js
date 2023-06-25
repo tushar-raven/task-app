@@ -28,6 +28,12 @@ class App extends Component {
     });
   };
 
+  deleteTask = (taskId) => {
+    const updatedTasks = [...this.state.tasks];
+    updatedTasks.splice(taskId, 1);
+    this.setState({ tasks: updatedTasks });
+  };
+
   render() {
     const { task, tasks } = this.state;
 
@@ -43,7 +49,7 @@ class App extends Component {
           />
           <button type="submit">Add Task</button>
         </form>
-        <Overview tasks={tasks} />
+        <Overview tasks={tasks} deleteTask={this.deleteTask} />
       </div>
     );
   }
